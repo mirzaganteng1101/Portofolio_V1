@@ -444,7 +444,48 @@
             line-height: 1.6;
         }
 
-        
+        /* =========================================
+           ACHIEVEMENT SECTION
+        ========================================= */
+        .achievement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--bg-surface);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .achievement-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateX(5px);
+        }
+
+        .achievement-icon {
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .achievement-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .achievement-content p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
 
         /* =========================================
            EXPERIENCE SECTION
@@ -553,68 +594,83 @@
             border: 1px solid var(--border-color);
             overflow: hidden;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.15fr; /* Memberikan sedikit lebih banyak ruang untuk teks */
+            align-items: stretch;
             transition: var(--transition-smooth);
         }
 
         .featured-project:hover {
             border-color: rgba(139, 92, 246, 0.4);
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
         }
 
         .project-image-wrapper {
             width: 100%;
             height: 100%;
-            min-height: 300px;
-            overflow: hidden;
+            min-height: 350px;
             position: relative;
-            background-color: #1a1a1a;
+            background-color: rgba(255, 255, 255, 0.02); /* Latar belakang transparan halus */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem; /* Membingkai gambar agar tidak menempel di ujung layar */
+            border-right: 1px solid var(--border-color);
         }
 
         .project-image-wrapper img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain; /* Memastikan grafik tidak terpotong (cover -> contain) */
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Memberi kedalaman pada gambar berlatar putih */
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .featured-project:hover .project-image-wrapper img {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
         .project-details {
-            padding: 3rem;
+            padding: 3.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .project-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
+            font-size: 1.35rem; /* Disesuaikan agar judul panjang lebih proporsional */
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+            color: var(--text-primary);
         }
 
         .project-details p {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            line-height: 1.8;
+            text-align: justify;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
         }
 
         .tech-stack span {
             font-family: monospace;
-            font-size: 0.8rem;
-            color: var(--accent-blue);
-            background: rgba(59, 130, 246, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px; /* Diubah menjadi pill shape */
+            letter-spacing: 0.5px;
         }
 
         /* =========================================
@@ -732,7 +788,13 @@
             .hero-text h1 { font-size: 3.2rem; }
             .hero-image { width: 350px; height: 350px; }
             .featured-project { grid-template-columns: 1fr; }
-            .project-image-wrapper { height: 250px; min-height: auto; }
+            .project-image-wrapper { 
+                height: auto; 
+                min-height: 300px; 
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -974,7 +1036,28 @@
         </div>
     </section>
 
-    
+    <!-- ACHIEVEMENT SECTION (Optional Placeholder based on Nav Request) -->
+    <section id="achievement" class="section-padding" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Key <span>Achievements</span></h2>
+                <p class="section-subtitle">Milestones and recognitions throughout my journey.</p>
+            </div>
+            
+            <div class="achievement-list">
+                <!-- Achievement Item Placeholder -->
+                <div class="achievement-item reveal">
+                    <div class="achievement-icon">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <div class="achievement-content">
+                        <h3>Continuous Learning & Portfolio Building</h3>
+                        <p>Actively expanding knowledge in Data Engineering and Machine Learning while developing practical, real-world projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="section-padding">
@@ -987,8 +1070,8 @@
             <!-- Featured Project -->
             <div class="featured-project reveal">
                 <div class="project-image-wrapper">
-                    <!-- Placeholder gambar proyek -->
-                    <img src="/img/Image 1.png" alt="Sentiment Analysis Project">
+                    <!-- Referencing verbatim file name -->
+                    <img src="img/Image 1.png" alt="Sentiment Analysis Project">
                 </div>
                 <div class="project-details">
                     <h3>Analisis Sentimen Ulasan Pengguna Mobile Legends: Bang Bang dan Honor of Kings Menggunakan Model XLM-RoBERTa-Large</h3>
@@ -1008,7 +1091,7 @@
                     </div>
                     <div>
                         <!-- Ganti href dengan link repository asli Anda nanti -->
-                        <a href="https://colab.research.google.com/drive/1ILT3gfFuVyNogbezHUGkNVqZxd9Cmuiy?usp=sharing" target="_blank" class="btn btn-outline">
+                        <a href="https://colab.research.google.com/drive/1ILT3gfFuVyNogbezHUGkNVqZxd9Cmuiy?pli=1#scrollTo=oz5Q8Bk07rlD" target="_blank" class="btn btn-outline">
                             View Project
                             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                         </a>
